@@ -95,7 +95,7 @@ const getHeaders = (method = 'GET', body = null) => {
 
 // Helper function for API calls
 const apiCall = async (endpoint, options = {}) => {
-  const response = await fetch(endpoint, options);
+  const response = await fetch(`${API_URL}${endpoint}`, options);
   if (!response.ok) {
     const errorText = await response.text();
     console.error('API Error:', errorText);
@@ -204,7 +204,7 @@ export const apiService = {
   // Auth APIs
   signIn: async (username, password) => {
     try {
-      const response = await fetch('/api/auth/sign_in', {
+      const response = await fetch(`${API_URL}/api/auth/sign_in`, {
         method: 'POST',
         headers: {
           'accept': 'application/json',

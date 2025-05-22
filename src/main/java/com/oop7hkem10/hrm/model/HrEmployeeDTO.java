@@ -19,7 +19,6 @@ public class HrEmployeeDTO {
     @Size(max = 255)
     private String name;
 
-    @NotNull
     @Size(max = 255)
     private String code;
 

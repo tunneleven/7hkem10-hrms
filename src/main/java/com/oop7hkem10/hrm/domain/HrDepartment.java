@@ -31,14 +31,14 @@ public class HrDepartment {
     @Id
     @Column(nullable = false, updatable = false)
     @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
+            name = "department_primary_sequence",
+            sequenceName = "department_primary_sequence",
             allocationSize = 1,
-            initialValue = 10000
+            initialValue = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
+            generator = "department_primary_sequence"
     )
     private Long id;
 

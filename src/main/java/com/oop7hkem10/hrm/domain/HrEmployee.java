@@ -39,14 +39,14 @@ public class HrEmployee {
     @Id
     @Column(nullable = false, updatable = false)
     @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
+            name = "employee_primary_sequence",
+            sequenceName = "employee_primary_sequence",
             allocationSize = 1,
-            initialValue = 10000
+            initialValue = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
+            generator = "employee_primary_sequence"
     )
     private Long id;
 

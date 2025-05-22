@@ -28,14 +28,14 @@ public class ResUserRole {
     @Id
     @Column(nullable = false, updatable = false)
     @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
+            name = "user_role_primary_sequence",
+            sequenceName = "user_role_primary_sequence",
             allocationSize = 1,
-            initialValue = 10000
+            initialValue = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
+            generator = "user_role_primary_sequence"
     )
     private Long id;
 

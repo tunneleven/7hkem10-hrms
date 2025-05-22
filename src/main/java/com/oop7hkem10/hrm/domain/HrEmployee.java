@@ -39,22 +39,29 @@ public class HrEmployee {
     @Id
     @Column(nullable = false, updatable = false)
     @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
+            name = "employee_primary_sequence",
+            sequenceName = "employee_primary_sequence",
             allocationSize = 1,
-            initialValue = 10000
+            initialValue = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
+            generator = "employee_primary_sequence"
     )
     private Long id;
 
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private String code;
+	@Column(unique = true, updatable = false)
+	private String code;
+
+	@jakarta.persistence.PrePersist
+	private void generateCode() {
+		if (this.code == null && this.id != null) {
+			this.code = String.format("HTMV%05d", this.id);
+		}
+	}
 
     @Column
     private String email;
@@ -130,15 +137,15 @@ public class HrEmployee {
     private ResCompany company;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id", nullable = false)
+    @JoinColumn(name = "department_id")
     private HrDepartment department;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "job_position_id", nullable = false)
+    @JoinColumn(name = "job_position_id")
     private HrJobPosition jobPosition;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "job_title_id", nullable = false)
+    @JoinColumn(name = "job_title_id")
     private HrJobTitle jobTitle;
 
     @ManyToOne(fetch = FetchType.LAZY)

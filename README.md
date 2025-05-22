@@ -8,9 +8,11 @@
 
 ### Dependencies
 
-### Installing
+### Building
+mvn clean install
 
 ### Executing program
+java -jar .\target\<jar-packet-name>.jar
 
 ## Help
 
